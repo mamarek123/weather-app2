@@ -1,1 +1,71 @@
-<p>table works!</p>
+
+<div id = table-info>
+Welconme to WeatherApp!<br>
+Here you can find the weather forecast for the next 7 days and see how much power could a fotovolaic panel generate in this week!<br>
+You can check it anywhere in the world, by selecting the location on the map!
+</div>
+<div id = "table-holder">
+    <table>
+        <caption>Weather forecast wtih summary data</caption>
+        <tr>
+            <th>Date</th>
+            @for (date of forecastData.date; track $index){
+                <td>{{date}}</td>
+            }
+        </tr>
+        <tr>
+            <th>Weather</th>
+            @for (weather_code of forecastData.weather_code; track $index) {
+                <td>
+                @if (weather_code === 0) {
+                    <i class="fa-solid fa-sun"></i>
+                }
+                @else if (weather_code === 1 || weather_code === 2 || weather_code === 3) {
+                    <i class="fa-solid fa-cloud-sun"></i>
+                }
+                @else if (weather_code >= 45 && weather_code <= 48) {
+                    <i class="fa-solid fa-smog"></i>
+                }
+                @else if (weather_code === 51 || weather_code === 53 || weather_code === 55 || weather_code === 56 || weather_code === 57) {
+                    <i class="fa-solid fa-cloud-rain"></i>
+                }
+                @else if (weather_code === 61 || weather_code === 63 || weather_code === 65 || weather_code === 66 || weather_code === 67 || weather_code === 80 || weather_code === 81 || weather_code === 82) {
+                    <i class="fa-solid fa-cloud-showers-heavy"></i>
+                }
+                @else if (weather_code === 71 || weather_code === 73 || weather_code === 75 || weather_code === 77 || weather_code === 85 || weather_code === 86) {
+                    <i class="fa-solid fa-cloud-meatball"></i>
+                }
+                @else if (weather_code === 95 || weather_code === 96 || weather_code === 99) {
+                    <i class="fa-solid fa-cloud-bolt"></i>
+                }@else {
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                }
+                </td>
+                
+            }
+        </tr>
+            <tr>
+              <th>Maximum temperature of the day</th>
+                @for (maxTemp of forecastData.temperature_2m_max; track $index) {
+                  <td>{{maxTemp}}</td>
+                }
+            </tr>
+            <tr>
+              <th>Minimum temperature of the day</th>
+                @for (minTemp of forecastData.temperature_2m_min; track $index) {
+                  <td>{{minTemp}}</td>
+                }
+            </tr>
+            </table>
+            <div>
+                This week a fotovoltaic panel could produce: {{forecastData.generated_energy}} kWh
+            </div>
+            <div>
+                Summary of the week, this will be: <br> {{summaryData.precipitation}} where on average  we will have: {{summaryData.average_sun_exposition_time}} hours of clear sunshine daily.
+            </div>
+            <div>
+                >Maximum temperature of the week:{{summaryData.max_temperature}}°C<br>
+                >Minimum temperature of the week:{{summaryData.min_temperature}}°C<br>
+                >Average atmospheric pressure this week:{{summaryData.average_pressure}} hPa
+            </div>
+</div>
