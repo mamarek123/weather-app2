@@ -1,12 +1,26 @@
 #map-container {
     max-width: 90%; 
     margin: 10px auto; 
+    border-radius: 20px;
+    background-color: #222222;
+        border: 3px solid #00000038; 
+        color: #ffffff;
+
+  }
+
+#map-info{
+    border-radius: 20px; 
   }
   
   #map {
     height: 500px; 
     border-radius: 20px; 
-    border: 3px solid #00000038; 
 
   }
-
+  
+  p {
+    font-weight: bold;
+    margin: 0px;
+  
+   padding-left: 20px;
+   }

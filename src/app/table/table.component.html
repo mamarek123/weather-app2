@@ -1,18 +1,18 @@
 
 <div id = table-info>
-Welconme to WeatherApp!<br>
+<h2>Welconme to WeatherApp!</h2><br>
 Here you can find the weather forecast for the next 7 days and see how much power could a fotovolaic panel generate in this week!<br>
 You can check it anywhere in the world, by selecting the location on the map!
 </div>
-<div id = "table-holder">
-    <table>
-        <caption>Weather forecast wtih summary data</caption>
-        <tr>
+<div id ="table-holder" >
+    <table class="table table-bordered table-hover table-striped">
+        <thead class="thead-dark">
             <th>Date</th>
             @for (date of forecastData.date; track $index){
-                <td>{{date}}</td>
+                <th>{{date}}</th>
             }
-        </tr>
+    </thead>
+    <tbody>
         <tr>
             <th>Weather</th>
             @for (weather_code of forecastData.weather_code; track $index) {
@@ -56,16 +56,30 @@ You can check it anywhere in the world, by selecting the location on the map!
                   <td>{{minTemp}}</td>
                 }
             </tr>
+            <tbody>
             </table>
-            <div>
-                This week a fotovoltaic panel could produce: {{forecastData.generated_energy}} kWh
-            </div>
-            <div>
+
+            <table  class="table table-striped  table-hover">
+                <tbody>
+                <tr>
+                    <td>
+                    This week a fotovoltaic panel could produce: {{forecastData.generated_energy}} kWh
+                </td>
+                </tr>
+
+                            <tr>
+                                <td>
                 Summary of the week, this will be: <br> {{summaryData.precipitation}} where on average  we will have: {{summaryData.average_sun_exposition_time}} hours of clear sunshine daily.
-            </div>
-            <div>
+                </td>
+            </tr>
+            <tr>
+                <td
                 >Maximum temperature of the week:{{summaryData.max_temperature}}°C<br>
                 >Minimum temperature of the week:{{summaryData.min_temperature}}°C<br>
                 >Average atmospheric pressure this week:{{summaryData.average_pressure}} hPa
-            </div>
+                </td>
+            </tr>
+        </tbody>
+        </table>
+
 </div>
