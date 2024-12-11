@@ -4,6 +4,9 @@ import { HeaderComponent } from './header/header.component';
 import { MapComponent } from "./map/map.component";
 import { TableComponent } from "./table/table.component";
 import { FooterComponent } from "./footer/footer.component";
+import { ToastrService } from 'ngx-toastr';
+
+
 
 @Component({
   selector: 'app-root',
@@ -13,5 +16,12 @@ import { FooterComponent } from "./footer/footer.component";
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
+
+  constructor(private toastrService: ToastrService) { 
+  }
+
   title = 'weather-app2';
+
+
+
 }

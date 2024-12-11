@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { ForecastResponse } from "./forecast_response.model";
 import { SummaryResponse } from "./summary_response.model";
+import { ToastrService } from "ngx-toastr";
 
 @Injectable({ providedIn: 'root' })
 export class WeatherEnergyService {
@@ -15,7 +16,7 @@ export class WeatherEnergyService {
   private apiUrl = 'http://localhost:8080/api/v1/weekly';
 
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private  toastr: ToastrService) {}
 
   fetchSummary(lng:number, lat: number): void{
     const params = new HttpParams()
@@ -36,6 +37,7 @@ export class WeatherEnergyService {
   }
 
   fetchForecastAndSummary(lng: number, lat: number): void {
+    this.toastr.info('trying to fetch forecast and summary data for location: ' + lng + ', ' + lat);
     this.fetchForecast(lng,lat);
     this.fetchSummary(lng,lat);
   }
@@ -47,8 +49,12 @@ export class WeatherEnergyService {
 
 
     this.http.get<ForecastResponse>(this.apiUrl + '/forecast', { params }).subscribe({
-      next:  (data) => {this.forecastDataSubject.next(data);},
+      next:  (data) => {
+        this.forecastDataSubject.next(data);
+        this.toastr.success('Data fetched successfully');
+      },
       error: (error) => {
+        this.toastr.error('Error fetching data');
         console.error("Error fetching forecast:", error);
       }
       }
