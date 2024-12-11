@@ -18,27 +18,27 @@ You can check it anywhere in the world, by selecting the location on the map!
             @for (weather_code of forecastData.weather_code; track $index) {
                 <td>
                 @if (weather_code === 0) {
-                    <i class="fa-solid fa-sun"></i>
+                    <i class="fa-solid fa-sun"></i>No Clouds!
                 }
                 @else if (weather_code === 1 || weather_code === 2 || weather_code === 3) {
-                    <i class="fa-solid fa-cloud-sun"></i>
+                    <i class="fa-solid fa-cloud-sun"></i> Some Clouds
                 }
                 @else if (weather_code >= 45 && weather_code <= 48) {
-                    <i class="fa-solid fa-smog"></i>
+                    <i class="fa-solid fa-smog"></i> Cloudy
                 }
                 @else if (weather_code === 51 || weather_code === 53 || weather_code === 55 || weather_code === 56 || weather_code === 57) {
-                    <i class="fa-solid fa-cloud-rain"></i>
+                    <i class="fa-solid fa-cloud-rain"></i> Light rain
                 }
                 @else if (weather_code === 61 || weather_code === 63 || weather_code === 65 || weather_code === 66 || weather_code === 67 || weather_code === 80 || weather_code === 81 || weather_code === 82) {
-                    <i class="fa-solid fa-cloud-showers-heavy"></i>
+                    <i class="fa-solid fa-cloud-showers-heavy"></i> Heavy Rain
                 }
                 @else if (weather_code === 71 || weather_code === 73 || weather_code === 75 || weather_code === 77 || weather_code === 85 || weather_code === 86) {
-                    <i class="fa-solid fa-cloud-meatball"></i>
+                    <i class="fa-solid fa-cloud-meatball"> </i> Snowy
                 }
                 @else if (weather_code === 95 || weather_code === 96 || weather_code === 99) {
-                    <i class="fa-solid fa-cloud-bolt"></i>
+                    <i class="fa-solid fa-cloud-bolt"></i> Stormy
                 }@else {
-                    <i class="fa-solid fa-circle-exclamation"></i>
+                    <i class="fa-solid fa-circle-exclamation"></i> Error
                 }
                 </td>
                 
@@ -47,13 +47,13 @@ You can check it anywhere in the world, by selecting the location on the map!
             <tr>
               <th>Maximum temperature of the day</th>
                 @for (maxTemp of forecastData.temperature_2m_max; track $index) {
-                  <td>{{maxTemp}}</td>
+                  <td>{{maxTemp}}°C</td>
                 }
             </tr>
             <tr>
               <th>Minimum temperature of the day</th>
                 @for (minTemp of forecastData.temperature_2m_min; track $index) {
-                  <td>{{minTemp}}</td>
+                  <td>{{minTemp}}°C</td>
                 }
             </tr>
             <tbody>
