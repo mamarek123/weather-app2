@@ -13,7 +13,7 @@ export class WeatherEnergyService {
   private summaryDataSubject = new BehaviorSubject<SummaryResponse | null>(null);
   summaryData$ = this.summaryDataSubject.asObservable();
 
-  private apiUrl = 'http://localhost:8080/api/v1/weekly';
+  private apiUrl = 'https://weatherapp-backend-0225.onrender.com/api/v1/weekly';
 
 
   constructor(private http: HttpClient, private  toastr: ToastrService) {}
