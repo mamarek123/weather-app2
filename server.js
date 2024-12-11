@@ -6,7 +6,7 @@ const app = express();
 
 const port = process.env.PORT || 4200;
 
-app.use(express.static(__dirname + '/dist/weather-app-front/browser'));
+app.use(express.static(__dirname + '/dist/weather-app2/browser'));
 
 app.get('/*', (req, res) => res.sendFile(path.join(__dirname)));
 
